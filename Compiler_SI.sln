@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compiler_SI", "Compiler_SI\Compiler_SI.csproj", "{18A6C170-8899-4473-8BCB-75A4D64DE04D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0160B2B3-81AC-4AC9-ACB3-3C78AB5A516D}"
+	ProjectSection(SolutionItems) = preProject
+		Compiler_SI\bin\Debug\code.txt = Compiler_SI\bin\Debug\code.txt
+		Compiler_SI\bin\Debug\code1.txt = Compiler_SI\bin\Debug\code1.txt
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://andrewnikolin.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Compiler_SI\\Compiler_SI.csproj
+		SccProjectName1 = Compiler_SI
+		SccLocalPath1 = Compiler_SI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18A6C170-8899-4473-8BCB-75A4D64DE04D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18A6C170-8899-4473-8BCB-75A4D64DE04D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18A6C170-8899-4473-8BCB-75A4D64DE04D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18A6C170-8899-4473-8BCB-75A4D64DE04D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
