@@ -178,6 +178,8 @@ namespace Compiler_SI
 
             if (insideComment) // Незакрытый коммент
                 TableErrors.Add("Comment is not closed");
+            if (currToken != "")
+                results.Add(currToken);
 
             return results;
         }

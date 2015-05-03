@@ -1,5 +1,10 @@
 ﻿using System;
 
+/*Exit codes: 
+ 1 - File with code doesn't exist
+ 2 - user didn't input file name
+ 3 - tokens table isn't full (possibly caused by not finished program) */
+
 namespace Compiler_SI
 {
     internal class Program
@@ -16,16 +21,15 @@ namespace Compiler_SI
                 Environment.Exit(2);
             }
 
-            if (file.IndexOf(".txt")==-1)
+            if (file.IndexOf(".txt", StringComparison.Ordinal)==-1)
             {
                 file += ".txt";
             }
 
-            Scanner sc = new Scanner(file);
+            var sc = new Scanner(file);
             sc.initialize_scan();
 
             Console.WriteLine("Input program:");
-//            Console.WriteLine("-");
             Console.Write(sc.CodeFile);
             Console.WriteLine();
 
@@ -72,9 +76,27 @@ namespace Compiler_SI
             Console.WriteLine("Table of tokens:");
             foreach (var tableToken in sc.TableTokens)
             {
-                Console.WriteLine(tableToken.Type.ToString() + " " + tableToken.Index.ToString() + " " +
+                Console.WriteLine(tableToken.Type + " " + tableToken.Index + " " +
                                   sc.GetTokenValue(tableToken));
             }
+            Console.WriteLine();
+
+
+            if (sc.TableErrors.Count > 0)
+            {
+                Console.ReadLine();
+                return;
+            }
+
+
+            var parser = new Parser(sc);
+            if (!parser.Parse())
+                Console.WriteLine("Token " + sc.GetTokenValue(parser.Error) + " cause this error: " + parser.Error.Geterrortext());
+            else
+            {
+                Console.WriteLine("Parser didn't find any errors");
+            }
+
             Console.ReadLine();
         }
     }
