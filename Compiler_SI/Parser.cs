@@ -94,11 +94,11 @@ namespace Compiler_SI
             var token = GetnextToken();
             switch (sc.GetTokenValue(token))
             {
-                case "END":
-                    return true;
                 case "ELSE":
                     return true;
                 case "ENDIF":
+                    return true;
+                case "END":
                     return true;
                 case ";":
                     return Statements();
@@ -172,10 +172,14 @@ namespace Compiler_SI
                     {
                         _tokenId--;
                         token = GetnextToken();
-                        if (sc.GetTokenValue(token) != "ENDIF") return true;
-                        token = GetnextToken();
-                        if (sc.GetTokenValue(token) == ";") return Statements();
-                        add_error(token, "You must use ';' after statement end");
+                        if (sc.GetTokenValue(token) == "ENDIF")
+                        {
+                            token = GetnextToken();
+                            if (sc.GetTokenValue(token) == ";") return Statements();
+                            add_error(token, "You must use ';' after statement end");
+                            return false;
+                        }
+                        add_error(token, "Condition statement must end with ENDIF");
                         return false;
                     }
                     break;

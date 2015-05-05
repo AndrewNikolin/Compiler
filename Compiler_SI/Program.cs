@@ -91,7 +91,7 @@ namespace Compiler_SI
 
             var parser = new Parser(sc);
             if (!parser.Parse())
-                Console.WriteLine("Token " + sc.GetTokenValue(parser.Error) + " cause this error: " + parser.Error.Geterrortext());
+                Console.WriteLine("Token " + sc.GetTokenValue(parser.Error) + " caused this error: " + parser.Error.Geterrortext());
             else
             {
                 Console.WriteLine("Parser didn't find any errors");
