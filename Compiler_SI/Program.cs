@@ -95,6 +95,7 @@ namespace Compiler_SI
             else
             {
                 Console.WriteLine("Parser didn't find any errors");
+                parser.Block.Print();
             }
 
             Console.ReadLine();
