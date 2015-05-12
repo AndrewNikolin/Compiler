@@ -24,7 +24,7 @@ namespace Compiler_SI
             return sc.TableTokens[_tokenId];
         }
 
-        public bool Parse() // Начало грамматического анализа
+        public bool Parse() // Начало грамматического анализа и создание дерева
         {
             return Program();
         }

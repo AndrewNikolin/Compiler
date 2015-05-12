@@ -16,9 +16,6 @@ namespace Compiler_SI
         public List<string> TableErrors; // Таблица ошибок
         public string CodeFile; // Код из файла
         private string _textFileName; // Имя файла
-/*
-        private string[] _programCode;
-*/
         public List<Token> TableTokens;
 
         public Scanner(string inputFileName)
@@ -36,14 +33,13 @@ namespace Compiler_SI
             TableOnesymbol.Add(",");
             TableOnesymbol.Add(":");
             TableOnesymbol.Add("=");
+            TableOnesymbol.Sort();
 
             TableDelimeters.AddRange(TableOnesymbol);
             TableDelimeters.Add(" ");
             TableDelimeters.Add("\n");
             TableDelimeters.Add("\t");
             TableDelimeters.Add("\r");
-            //TableDelimeters.Add("(");
-            //TableDelimeters.Add(")");
 
             TableReserved.Add("PROGRAM");
             TableReserved.Add("BEGIN");
@@ -60,9 +56,6 @@ namespace Compiler_SI
         public void initialize_scan() //Начало сканирования
         {
             read_file(_textFileName);
-            //Console.WriteLine(code_file);
-            //program_code = code_file.Split(TableDelimeters.ToArray(), options:StringSplitOptions.RemoveEmptyEntries);
-            //Console.ReadLine();
             var splitted = Splitter();
             fill_tables(splitted);
         }
@@ -134,7 +127,6 @@ namespace Compiler_SI
             var insideComment = false;
             var currToken = "";
 
-            //for (var i = 0; i  code_file.Length; i++)
             var i = 0;
             while (i < CodeFile.Length)
             {
@@ -187,15 +179,14 @@ namespace Compiler_SI
 
         private bool IsIdentifier(string word) //Проверяет является ли входящая строка идентификатором
         {
-            if (word == "" || !char.IsLetter(word[0]))  // Здесь проскакивает ошибка: лексема начинается с маленькой
-                                                        // И IsLetter некорректно проверяет (нам нужна только латиница, а здесь пропускаются все буквы)
+            if (word == "" || !char.IsLetter(word[0]))  // И IsLetter некорректно проверяет (нам нужна только латиница, а здесь пропускаются все буквы)
                 return false;
 
             return
                 word.All(
                     c =>
                         char.GetUnicodeCategory(c) == UnicodeCategory.UppercaseLetter ||
-                        char.GetUnicodeCategory(c) == UnicodeCategory.DecimalDigitNumber);
+                        char.GetUnicodeCategory(c) == UnicodeCategory.DecimalDigitNumber); // Проверка на большие буквы или цифры в идентификаторе
         }
 
         private bool IsConstant(string word) //Проверяет является ли входящая строка десятичным литералом (константой)
