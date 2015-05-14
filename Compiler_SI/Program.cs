@@ -114,7 +114,7 @@ namespace Compiler_SI
                 switch (token.Type)
                 {
                     case 1:
-                        id = (int) sc.GetTokenValue(token).ToCharArray()[0];
+                        id = sc.GetTokenValue(token).ToCharArray()[0];
                         break;
                     case 0:
                         id = 401 + token.Index;

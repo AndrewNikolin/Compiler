@@ -13,7 +13,7 @@ namespace Compiler_SI.Tree
 
         public void Print(int n)
         {
-            Console.WriteLine(new string(' ', n) + "Unsigned integer:");
+            Console.WriteLine(new string(' ', n) + "Unsigned integer(GOTO):");
             Console.WriteLine(new string(' ', n + 1) + label);
         }
     }

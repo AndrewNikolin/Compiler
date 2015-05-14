@@ -10,14 +10,14 @@ namespace Compiler_SI.Tree
 
         public void Print(int n)
         {
-            Console.WriteLine(new string(' ', n) + "Incomplete condition statement:");
+            Console.WriteLine(new string(' ', n) + "Incomplete condition statement(IF):");
             Console.WriteLine(new string(' ', n+1) + "Variable identifier:");
             Console.WriteLine(new string(' ', n+2) + Leftpart);
             Console.WriteLine(new string(' ', n+1) + "Unsigned integer:");
             Console.WriteLine(new string(' ', n+2) + Rightpart);
             ThenStatements.Print(n);
             if (!Altpart) return;
-            Console.WriteLine(new string(' ', n) + "Alternative part:");
+            Console.WriteLine(new string(' ', n) + "Alternative part(ELSE):");
             ElseStatements.Print(n);
         }
     }
