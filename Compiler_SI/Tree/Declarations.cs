@@ -5,24 +5,24 @@ namespace Compiler_SI.Tree
 {
     internal class Declarations
     {
-        private List<string> labelsList;
+        public List<string> LabelsList;
 
         public Declarations()
         {
-            labelsList = new List<string>();
+            LabelsList = new List<string>();
         }
 
         public void add_label(string label)
         {
-            labelsList.Add(label);
+            LabelsList.Add(label);
         }
 
         public void Print(int n)
         {
-            if (labelsList.Count <= 0) return;
+            if (LabelsList.Count <= 0) return;
             n++;
             Console.WriteLine(new string(' ', n) + "Label declarations:");
-            foreach (var i in labelsList)
+            foreach (var i in LabelsList)
             {
                 Console.WriteLine(new string(' ', n + 1) + "Unsigned integer:");
                 Console.WriteLine(new string(' ', n + 2) + i);

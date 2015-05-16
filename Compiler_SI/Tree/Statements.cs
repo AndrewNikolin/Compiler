@@ -5,7 +5,7 @@ namespace Compiler_SI.Tree
 {
     class Statements
     {
-        private List<Statement> St;
+        public List<Statement> St;
 
         public Statements()
         {

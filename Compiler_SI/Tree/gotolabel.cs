@@ -4,7 +4,7 @@ namespace Compiler_SI.Tree
 {
     class Gotolabel
     {
-        private string label;
+        public string label;
 
         public Gotolabel(string l)
         {

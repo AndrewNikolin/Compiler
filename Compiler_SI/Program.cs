@@ -3,7 +3,8 @@
 /*Exit codes: 
  1 - File with code doesn't exist
  2 - user didn't input file name
- 3 - tokens table isn't full (possibly caused by not finished program) */
+ 3 - tokens table isn't full (possibly caused by not finished program)
+ 4 - program name used as variable */
 
 namespace Compiler_SI
 {
@@ -34,6 +35,7 @@ namespace Compiler_SI
             Console.WriteLine();
 
             Console.WriteLine();
+
             /*Console.WriteLine("Reserved words(0):");
             foreach (var word in sc.TableReserved)
             {
@@ -80,6 +82,7 @@ namespace Compiler_SI
                                   sc.GetTokenValue(tableToken));
             }
             Console.WriteLine();*/
+
             foreach (var word in sc.TableOnesymbol)
             {
                 Console.WriteLine((int)word.ToCharArray()[0]+" " + word);
@@ -151,6 +154,9 @@ namespace Compiler_SI
                 Console.WriteLine("Program's Parse Tree:");
                 parser.Block.Print();
             }
+
+            var CodeGenerator = new Generator(parser.Block, file.Remove(file.Length - 4));
+            Console.WriteLine(CodeGenerator.Generatecode());
 
             Console.ReadLine();
         }

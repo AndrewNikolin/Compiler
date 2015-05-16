@@ -4,7 +4,7 @@ namespace Compiler_SI.Tree
 {
     class Gotost
     {
-        private string label;
+        public string label;
 
         public Gotost(string l)
         {

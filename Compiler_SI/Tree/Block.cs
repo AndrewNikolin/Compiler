@@ -5,7 +5,7 @@ namespace Compiler_SI.Tree
     class Block
     {
         public Declarations Declarations;
-        private string _programName;
+        public string _programName;
         public Statements Statements;
 
         public Block(string name)
