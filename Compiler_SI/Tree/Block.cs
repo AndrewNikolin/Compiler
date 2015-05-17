@@ -16,12 +16,14 @@ namespace Compiler_SI.Tree
         public void Print()
         {
             Console.WriteLine("Program:");
-            Console.WriteLine(' ' + _programName);
+            Console.WriteLine(" Identifier:");
+            Console.WriteLine("  " + _programName);
+            Console.WriteLine(" Block:");
             if (Declarations != null)
             {
-                Declarations.Print(0);
+                Declarations.Print(1);
             }
-            Statements.Print(0);
+            Statements.Print(1);
         }
     }
 }
