@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Compiler_SI.Tree;
 
 namespace Compiler_SI
@@ -33,8 +32,18 @@ namespace Compiler_SI
 
         public string Generatecode()
         {
+            _asmlines.Add(".386");
             _asmlines.Add("TITLE " + _programTree._programName);
+            _asmlines.Add(".CODE");
             _asmlines.Add("start_point:");
+            var duplicates = _programTree.Declarations.LabelsList.GroupBy(s => s)
+    .SelectMany(grp => grp.Skip(1));
+            if (duplicates.Any())
+            {
+                Console.WriteLine("Duplicate entries in labels declaration");
+                Console.ReadLine();
+                Environment.Exit(5);
+            }
             StatementsGenerator(_programTree.Statements);
             _asmlines.Add("END start_point");
             foreach (var gotolabel in _gotolabels.Where(gotolabel => _labelsList.IndexOf(gotolabel)==-1))
@@ -46,7 +55,9 @@ namespace Compiler_SI
                 return "Label " + label + " wasn't declared";
             }
 
-            System.IO.File.WriteAllLines(_filename + ".asm", _asmlines);
+            _asmlines.Add("mov ah, 04ch\nint 21h");
+
+            File.WriteAllLines(_filename + ".asm", _asmlines);
            
             return "Code successfully generated";
         }
@@ -78,7 +89,7 @@ namespace Compiler_SI
             {
                 Console.WriteLine("You can't use program name as variable");
                 Console.ReadLine();
-                System.Environment.Exit(4);
+                Environment.Exit(4);
             }
             _asmlines.Add("MOV AX, " + ifSt.Leftpart);
             _asmlines.Add("MOV BX, " + ifSt.Rightpart);

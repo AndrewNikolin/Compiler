@@ -4,7 +4,8 @@
  1 - File with code doesn't exist
  2 - user didn't input file name
  3 - tokens table isn't full (possibly caused by not finished program)
- 4 - program name used as variable */
+ 4 - program name used as variable 
+ 5 - duplicate declarations */
 
 namespace Compiler_SI
 {
